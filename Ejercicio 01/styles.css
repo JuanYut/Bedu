@@ -45,7 +45,7 @@ header img {
 .section-01 div:nth-child(2) {
   height: 140px;
   width: 140px;
-  border: 1px solid pink;
+  border: 1px solid blue;
   place-self: start;
 }
 
