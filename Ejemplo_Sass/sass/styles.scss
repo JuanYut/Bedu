@@ -1,0 +1,14 @@
+$mainColor: black;
+$secondaryColor: yellow;
+
+h1 { color: red; }
+
+footer {
+  background-color: $mainColor;
+  h4 {
+    color: white;
+    a {
+      color: $secondaryColor;
+    }
+  }
+}
