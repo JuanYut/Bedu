@@ -1,14 +1,69 @@
+// Partial (_partial.scss) -----------------------
+@import "partial";
+
+// Variables -------------------------------------
 $mainColor: black;
 $secondaryColor: yellow;
+$base-color: rebeccapurple;
+
+// Mixin -----------------------------------------
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: rebeccapurple;
+  @include transform(rotate(30deg));
+}
+
+// Extend/Inheritance ----------------------------
+%message {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+%message-alert {
+  @extend %message;
+  color: red;
+}
+
+%message-success {
+  @extend %message;
+  color: green;
+}
+
+.message-alert {
+  @extend %message-alert;
+}
+
+.message-success {
+  @extend %message-success;
+}
+
+// Cycle FOR -------------------------------------
+@for $i from 1 through 3 {
+  li:nth-child(3n + #{$i}) { 
+    background-color: lighten($base-color, $i * 5%);
+  }
+}
+
+// @for $i from 1 through 3 {
+//   li:nth-child(#{$i}n) {
+//     background-color: lighten($base-color, $i * 5%);
+//   }
+// }
 
 h1 { color: red; }
 
 footer {
   background-color: $mainColor;
-  h4 {
-    color: white;
-    a {
-      color: $secondaryColor;
-    }
+  h4 { 
+    color: rebeccapurple;
+    a { color: yellow; }  
   }
 }
