@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM</title>
+</head>
+<body>
+  
+  <h1 id="title"></h1>
+
+  <a href="whttps://noobsjs.com/" id="a-link">Hello, I am an a</a>
+  <button id="btn-one">Remove</button>
+
+  <div id="segundo">
+    <h3>Hola 1</h3>
+    <h3>Hola 2</h3>
+    <h3>Hola 3</h3>
+    <p>Parrafo</p>
+  </div>
+
+  <table id="table-01">
+    <tr>
+      <td>Yolanda</td>
+      <td>Yang</td>
+      <td>21</td>
+    </tr>
+
+    <tr>
+      <td>Malu</td>
+      <td>Lopez</td>
+      <td>19</td>
+    </tr>
+  </table>
+
+  <input type="checkbox" id="checkbox-01">Click Me
+
+  <script>
+    document.querySelectorAll("#segundo h3").forEach(el => el.style.color = "rebeccapurple")
+
+    const newElement = document.createElement('h2')
+    newElement.textContent = 'Soy un nuevo elemento'
+    document.body.appendChild(newElement)
+
+    const addMyElements = (theElement, theNumber, theText) => {
+      for(let i=0; i<theNumber; i++) {
+        const newElement = document.createElement(theElement)
+        newElement.textContent = theText
+        document.body.appendChild(newElement)
+      }
+    }
+
+    addMyElements('h3', 5, 'gg soy del for')
+
+    // Tabla
+    const table = document.getElementById('table-01')
+    const row = table.insertRow(table.lastRow)
+    // let { cell1, cell2, cell3 } = { cell1: row.insertCell(0), cell2: row.insertCell(1), cell3: row.insertCell(2) }
+    // cell1.textContent = "Juan"
+    // cell2.textContent = "Santillan"
+    // cell3.textContent = 27
+
+    row.insertCell(0).textContent = 'Erik'
+    row.insertCell(1).textContent = 'Parra'
+    row.insertCell(2).textContent = '21'
+
+    // Editar una celda de la tabla
+    const editMyCell = (theRow, theCell, theText) => table.rows[theRow].cells[theCell].textContent = theText
+    editMyCell(2,0, 'PERRO')
+
+  </script>
+
+  <script>
+    setTimeout( () => {
+      let obj = document.getElementById("title")
+      obj.innerText = "qwerty"
+
+      const generateRandom = num => Math.ceil(Math.random() * num)
+
+      const knowMulti = num => {
+        if ( ((num % 3) === 0) && ((num % 5) !== 0) ) {
+          obj.style.color = "green"
+          return `${num} - FIZZ`
+        }
+        else if ( (((num % 3) !== 0) && ((num % 5) === 0) )) {
+          obj.style.color = "rebeccapurple"
+          return `${num} - BUZZ`
+        }
+        else if ( ((num % 3) === 0) && ((num % 5) === 0) ) {
+          return `${num} - FIZZ and BUZZ`
+        } else {
+          return `${num} - Nothing`
+          obj.style.color = "red"
+        }
+
+      }
+
+      obj.innerText = knowMulti( generateRandom(15) )
+    }, 2000)
+  </script>
+
+  <!-- Checkbox -->
+  <script>
+    document.getElementById('checkbox-01').addEventListener('click', () => console.log('Why you click me????'))
+  </script>
+
+  <script src="./index.js"></script>
+
+</body>
+</html>
